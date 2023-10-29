@@ -49,11 +49,12 @@ public class Bank {
 
     // Deposit method
     public boolean deposit(int account_no, String pin, double amount) {
-        if (account_no == this.account_no && pin == this.pin && amount > 0) {
-            balance += amount;
+        if (getAccountNo() == this.account_no && pin.equals(this.pin) && amount > 0) {
+            setBalance(amount + this.balance);
             System.out.println("Deposit of $" + amount + " successful. New balance: $" + balance);
             return true;
         } else {
+
             System.out.println("Deposit failed. Invalid account number or PIN.");
             return false;
         }
@@ -61,11 +62,11 @@ public class Bank {
 
     // Withdraw method
     public boolean withdraw(int account_no, String pin, double amount) {
-        if (account_no == this.account_no && pin == this.pin && amount > 0 && amount <= balance) {
+        if (account_no == getAccountNo() && pin.equals(this.pin) && amount > 0 && amount <= getBalance()) {
             balance -= amount;
-            System.out.println("Withdrawal of $" + amount + " successful. New balance: $" + balance);
+            System.out.println("Withdrawal of $" + amount + " successful. New balance: $" + getBalance());
             return true;
-        } else if (account_no != this.account_no || pin != this.pin) {
+        } else if (account_no != getAccountNo() || pin != this.pin) {
             System.out.println("Withdrawal failed. Invalid account number or PIN.");
             return false;
         } else {

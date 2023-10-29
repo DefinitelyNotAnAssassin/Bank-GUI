@@ -74,14 +74,9 @@ public class layout2 extends JPanel {
         checkBalanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Request the PIN from the user
-                String enteredPIN = JOptionPane.showInputDialog("Enter your PIN:");
-                if (enteredPIN != null && enteredPIN.equals(bank.getPin())) {
-                    // PIN is correct, display the account balance
-                    JOptionPane.showMessageDialog(null, "Current Balance: $" + bank.getBalance());
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect PIN. Check balance operation canceled.");
-                }
+
+                JOptionPane.showMessageDialog(null, "Current Balance: $" + bank.getBalance());
+
             }
         });
     }
